@@ -30,6 +30,18 @@ func main() {
 
 	defer second()
 	first()
+
+	// Pointer
+	q := 5
+	zero(q)
+	fmt.Println(q) // 5
+	zero2(&q)
+	fmt.Println(q) // 0
+
+	// new Pointer
+	mathPiNum := new(float64)
+	PI(mathPiNum)
+	fmt.Println(*mathPiNum) // 3.1415
 }
 
 // Functions
@@ -77,4 +89,15 @@ func first() {
 }
 func second() {
 	fmt.Println("Second")
+}
+
+// Pointer
+func zero(q int) {
+	q = 0
+} // Without Pointer
+func zero2(qPtr *int) {
+	*qPtr = 0
+} // With Pointer
+func PI(piNumber *float64) {
+	*piNumber = 3.1415
 }
