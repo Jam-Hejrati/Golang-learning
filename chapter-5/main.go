@@ -21,21 +21,21 @@ func main() {
 
 // Arrays
 func arr() {
-	x := [5]float64{34, 35, 36, 37, 38}
-	var total float64 = 0
+	x := [5]int{34, 35, 36, 37, 38}
+	var total int = 0
 	for _, value := range x { // The _ is index that we didn't need here
 		total += value
 	}
-	fmt.Println(total / float64(len(x)))
+	fmt.Println(total / (len(x)))
 }
 
 // Slices
 func slice() {
-	arr := [5]float64{1, 2, 3, 4, 5}
-	//x := make([]float64, 5)
-	x := arr[1:4]
-	y := arr[:] // shallow copy of whole array => y = arr[0 : len(x)]
-	fmt.Println(x, y)
+	arr := [5]int{1, 2, 3, 4, 5}
+	x := make([]float64, 5)
+	y := arr[1:4]
+	z := arr[:] // shallow copy of whole array => y = arr[0 : len(x)]
+	fmt.Printf("x: %f\n y: %d\n z:%d\n & arr: %d\n", x, y, z, arr)
 }
 
 // Slice , Append
@@ -77,8 +77,10 @@ func Map() {
 	delete(elements, "Ne")
 	fmt.Println(len(elements))
 	fmt.Println(elements)
-	if name, ok := elements["F"]; ok {
+	if name, ok := elements["FR"]; ok {
 		fmt.Println(name, ok)
+	} else {
+		fmt.Println("Element not found")
 	}
 }
 
@@ -120,7 +122,8 @@ func findMinNm() {
 		17, 18, 97, 83,
 	}
 	temp := x[0]
-	for _, val := range x {
+	for index, val := range x {
+		fmt.Printf("Index: %d, Temp: %d\n", index, temp)
 		if temp > val {
 			temp = val
 		}

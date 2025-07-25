@@ -52,6 +52,7 @@ func average(arr []float64) float64 {
 	}
 	return total / float64(len(arr))
 }
+
 func average2(arr []float64) (answer float64) {
 	total := 0.0
 	for _, v := range arr {
@@ -60,16 +61,21 @@ func average2(arr []float64) (answer float64) {
 	answer = total / float64(len(arr))
 	return
 }
+
 func f() (int, int) {
 	return 5, 6
 } // Multiple return values
-func add(args ...int) int {
+
+func add(args ...int) (answer int) {
 	total := 0
+	fmt.Println("args: ", args) // args is a slice
 	for _, val := range args {
 		total += val
 	}
-	return total
+	answer = total // can't return de defined variable directly (total)
+	return
 }
+
 func makeEvenGenerator() func() int {
 	i := 0
 	return func() int {
@@ -78,15 +84,18 @@ func makeEvenGenerator() func() int {
 		return ret
 	}
 } // Closure
+
 func factorial(index int) int {
-	if index == 0 {
+	if index == 1 {
 		return 1
 	}
 	return index * factorial(index-1)
 }
+
 func first() {
 	fmt.Println("First")
 }
+
 func second() {
 	fmt.Println("Second")
 }
@@ -95,9 +104,11 @@ func second() {
 func zero(q int) {
 	q = 0
 } // Without Pointer
+
 func zero2(qPtr *int) {
 	*qPtr = 0
 } // With Pointer
+
 func PI(piNumber *float64) {
 	*piNumber = 3.1415
 }
